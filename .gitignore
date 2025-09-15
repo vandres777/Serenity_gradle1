@@ -42,9 +42,9 @@ ehthumbs.db
 Thumbs.db
 
 # 🚀 Serenity BDD specific
-**/serenity.properties
-**/serenity.conf
-**/thucydides.conf
+#**/serenity.properties    // comentada para lograr subir este archivo al repo
+#**/serenity.conf // comentada para lograr subir este archivo al repo
+#**/thucydides.conf // comentada para lograr subir este archivo al repo
 
 # 📊 Reportes (opcional - si no quieres subir reportes generados)
 # /target/site/serenity/
