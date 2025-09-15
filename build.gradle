@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+    id 'net.serenity-bdd.serenity-gradle-plugin' version '3.6.22'
+}
+
+group = 'com.example'
+version = '1.0.0'
+
+sourceCompatibility = 17
+targetCompatibility = 17
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation "net.serenity-bdd:serenity-core:3.6.22"
+    testImplementation "net.serenity-bdd:serenity-junit5:3.6.22"
+    testImplementation "net.serenity-bdd:serenity-screenplay:3.6.22"
+    testImplementation "net.serenity-bdd:serenity-screenplay-webdriver:3.6.22"
+    testImplementation "io.github.bonigarcia:webdrivermanager:5.6.2"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.9.3"
+    testImplementation "org.junit.jupiter:junit-jupiter-engine:5.9.3"
+    testImplementation "org.assertj:assertj-core:3.24.2"
+    testImplementation "org.slf4j:slf4j-simple:2.0.7"
+}
+
+test {
+    useJUnitPlatform()
+    systemProperties System.getProperties()
+    testLogging {
+        events "passed", "skipped", "failed"
+        showStandardStreams = true
+        exceptionFormat = "full"
+    }
+}
+
+serenity {
+    testRoot = "com.example.runners"
+    requirementsDir = "src/test/resources/features"
+}
+
