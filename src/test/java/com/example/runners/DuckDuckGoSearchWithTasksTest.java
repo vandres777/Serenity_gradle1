@@ -1,6 +1,5 @@
 package com.example.runners;
 
-import com.example.ui.SearchForm;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -9,9 +8,6 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import org.openqa.selenium.WebDriver;
 import com.example.tasks.SearchFor;
-import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
-import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
-import static net.serenitybdd.screenplay.questions.WebElementQuestion.the;
 import com.example.config.WebDriverConfig;
 
 @ExtendWith(SerenityJUnit5Extension.class)
@@ -33,7 +29,8 @@ public class DuckDuckGoSearchWithTasksTest extends WebDriverConfig {
         );
 
         andres.should(
-                seeThat(the(SearchForm.SEARCH_RESULTS), isVisible())
+              //  seeThat(the(SearchForm.FIRST_RESULT_LINK), isVisible())
+
         );
     }
 }

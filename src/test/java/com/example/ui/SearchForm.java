@@ -12,5 +12,8 @@ public class SearchForm {
             .located(By.cssSelector("input[type='submit'], button[type='submit'], #search_button"));
 
     public static final Target SEARCH_RESULTS = Target.the("resultados de búsqueda")
-            .located(By.cssSelector("[data-testid='results'], .results, #links, .react-results--main"));
+            .located(By.id("links_wrapper"));
+
+    public static final Target FIRST_RESULT_LINK = Target.the("primer resultado de búsqueda")
+            .located(By.xpath("(//a[@data-testid='result-title-a'])[1]"));
 }
