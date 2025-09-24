@@ -46,8 +46,8 @@ Thumbs.db
 #**/serenity.conf // comentada para lograr subir este archivo al repo
 #**/thucydides.conf // comentada para lograr subir este archivo al repo
 
-# 📊 Reportes (opcional - si no quieres subir reportes generados)
-# /target/site/serenity/
+# 📊 Reportes
+# /target/site/serenity/  /// se comenta para no subir los reportes generados
 
 # 🐳 Docker (opcional)
 docker-compose.yml

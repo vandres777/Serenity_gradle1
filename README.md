@@ -16,13 +16,6 @@ El proyecto está configurado para ejecutar pruebas de ejemplo que demuestran la
 *   JDK 11 o superior.
 *   Git (opcional, para clonar el repositorio).
 
-## Cómo Empezar
-
-1.  **Clona el repositorio** (si está en un repositorio Git):
-    ```bash
-    git clone <URL_DEL_REPOSITORIO>
-    cd Serenity_gradle
-    ```
 
 2.  **Compila el proyecto:**
     El wrapper de Gradle (`gradlew`) descargará la versión correcta de Gradle y todas las dependencias necesarias la primera vez que ejecutes una tarea.
@@ -31,9 +24,14 @@ El proyecto está configurado para ejecutar pruebas de ejemplo que demuestran la
 
 Para ejecutar las pruebas de Serenity, abre una terminal en el directorio raíz del proyecto y utiliza el siguiente comando:
 
-```bash
-./gradlew clean test
-```
+
+Ejecuta las pruebas sin generar informes:
+
+	./gradlew clean test  
+
+Ejecuta las pruebas y genera los informes de Serenity:
+
+	./gradlew clean test aggregate 
 
 Este comando realizará las siguientes acciones:
 *   `clean`: Limpia los resultados de compilaciones anteriores.
