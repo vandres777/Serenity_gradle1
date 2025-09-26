@@ -27,9 +27,15 @@ Ejecuta las pruebas sin generar informes:
 
 	./gradlew clean test  
 
-Ejecuta las pruebas y genera los informes de Serenity:
+Ejecuta las pruebas y genera los informes de Serenity (por defecto se ejecuta en google chrome):
 
 	./gradlew clean test aggregate 
+
+Puedes especificar el navegador en el que deseas ejecutar las pruebas utilizando la propiedad `-Denvironment`. Los valores posibles son `chrome` y `edge`. Por ejemplo:
+    
+    ./gradlew clean test -Denvironment=chrome
+    ./gradlew clean test -Denvironment=edge
+
 
 ## Ver los Informes de Pruebas
 
@@ -44,6 +50,7 @@ Este informe proporciona un desglose de los resultados de las pruebas, incluyend
 
 El navegador configurado para las pruebas es Google Chrome. 
 Desde artchivo `serenity.conf` puedes cambiar la configuración para que este pueda ejecutarse en modo headless o en otro navegador compatible.
+
 
 ## Configuración de archivo serenity.conf
 
