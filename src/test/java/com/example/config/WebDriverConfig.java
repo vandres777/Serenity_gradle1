@@ -2,14 +2,12 @@ package com.example.config;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.BeforeAll;
-import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class WebDriverConfig {
 
     private static final Logger logger = LoggerFactory.getLogger(WebDriverConfig.class);
-
 
     @BeforeAll
     public static void setupWebDriver() {
