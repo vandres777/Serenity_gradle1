@@ -46,28 +46,3 @@ serenity {
 }
 
 
-
-// Agregar al final de tu build.gradle
-tasks.register('showNotification') {
-    doLast {
-        println "🔔 NOTIFICACIÓN: Automatización Serenity BDD completada 🎉"
-        println "📊 Reportes generados en: build/reports/serenity/index.html"
-        println "⏰ Finalizado: ${new Date()}"
-
-        // Notificación visual simple
-        if (System.getProperty('os.name').toLowerCase().contains('windows')) {
-            exec {
-                commandLine 'cmd', '/c', 'echo', '🎉 Automatización completada! && timeout /t 5'
-            }
-        }
-    }
-}
-
-// Configurar para que se ejecute después de aggregate
-aggregate.finalizedBy showNotification
-
-// O crear un task completo
-tasks.register('runWithNotification') {
-    dependsOn 'clean', 'test', 'aggregate', 'showNotification'
-    description = 'Ejecuta las pruebas y muestra notificación al finalizar'
-}
