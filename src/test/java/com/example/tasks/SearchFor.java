@@ -14,8 +14,7 @@ public class SearchFor {
         return Task.where("{0} busca el termino '" + term + "'",
                 Open.url("https://duckduckgo.com/"),
                 Enter.keyValues(term).into(SearchForm.SEARCH_INPUT)
-                        .thenHit(Keys.ENTER),
-                Click.on(SearchForm.FIRST_RESULT_LINK)
+                        .thenHit(Keys.ENTER)
         );
     }
 }
