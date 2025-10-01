@@ -31,11 +31,17 @@ Ejecuta las pruebas y genera los informes de Serenity (por defecto se ejecuta en
 
 	./gradlew clean test aggregate 
 
-Puedes especificar el navegador en el que deseas ejecutar las pruebas utilizando la propiedad `-Denvironment`. Los valores posibles son `chrome` y `edge`. Por ejemplo:
-    
+Puedes especificar el navegador en el que deseas ejecutar las pruebas utilizando la propiedad `-Denvironment`. 
+
+Google Chrome:
+
     ./gradlew clean test -Denvironment=chrome
 
+Edge:
+
     ./gradlew clean test -Denvironment=edge
+
+Firefox:
 
     gradle clean test -Ddriver=firefox
 
