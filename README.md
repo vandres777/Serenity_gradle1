@@ -1,4 +1,4 @@
-# Proyecto de Automatización de Pruebas con Serenity BDD y Gradle
+# 🚀Proyecto de Automatización de Pruebas con Serenity BDD y Gradle
 
 Este es un proyecto de ejemplo para la automatización de pruebas de interfaz de usuario (UI) web utilizando Serenity BDD, Java y Gradle.
 
@@ -17,7 +17,6 @@ Este proyecto de demostración automatiza pruebas para el sitio web DuckDuckGo. 
 *  Gradle instalado (opcional, ya que el proyecto incluye el wrapper de Gradle).
 *  Navegador Google Chrome instalado (u otro navegador compatible si se configura).
 *  IDE recomendado: IntelliJ IDEA, Eclipse o cualquier editor de texto.
-* 
 
 ## Ejecutar todo el proyecto
 
@@ -54,15 +53,15 @@ Firefox:
 Puedes ejecutar una clase de prueba específica utilizando la opción `--tests` seguida del nombre completo de la clase.
 Por ejemplo, para ejecutar la clase `DuckDuckGoSearchTest`, puedes usar uno de los siguientes comandos:
 
-para ejecutar la clase en navegador Google Chrome:
+Para ejecutar la clase en navegador Google Chrome:
 
     ./gradlew.bat clean test --tests "com.example.runners.DuckDuckGoSearchTest" -Denvironment=chrome
 
-para ejecutar la clase en navegador edge:
+Para ejecutar la clase en navegador edge:
 
     ./gradlew.bat clean test --tests "com.example.runners.DuckDuckGoSearchTest" -Denvironment=edge
 
-para ejecutar la clase en navegador firefox:
+Para ejecutar la clase en navegador firefox:
 
     ./gradlew clean test --tests "com.example.runners.DuckDuckGoSearchTest" -Ddriver=firefox
 
