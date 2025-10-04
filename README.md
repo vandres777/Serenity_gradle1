@@ -13,14 +13,15 @@ Este proyecto de demostración automatiza pruebas para el sitio web DuckDuckGo. 
 
 ## Prerrequisitos
 
-*   JDK 11 o superior.
+*  JDK 11 o superior.
+*  Gradle instalado (opcional, ya que el proyecto incluye el wrapper de Gradle).
+*  Navegador Google Chrome instalado (u otro navegador compatible si se configura).
+*  IDE recomendado: IntelliJ IDEA, Eclipse o cualquier editor de texto.
+* 
 
-2.  **Compila el proyecto:**
-    El wrapper de Gradle (`gradlew`) descargará la versión correcta de Gradle y todas las dependencias necesarias la primera vez que ejecutes una tarea.
+## Ejecutar todo el proyecto
 
-## Ejecutar las Pruebas
-
-Para ejecutar las pruebas de Serenity, abre una terminal en el directorio raíz del proyecto y utiliza el siguiente comando:
+Para ejecutar las pruebas de Serenity, abre una terminal en el directorio raíz del proyecto y aplica algunos de los siguientes comandos de termnal.
 
 
 Ejecuta las pruebas sin generar informes:
@@ -31,7 +32,9 @@ Ejecuta las pruebas y genera los informes de Serenity (por defecto se ejecuta en
 
 	./gradlew clean test aggregate 
 
-Puedes especificar el navegador en el que deseas ejecutar las pruebas utilizando la propiedad `-Denvironment`. 
+## Ejecutar el proyecto seleccionando el navegador
+
+Puedes especificar el navegador en el que deseas ejecutar las pruebas utilizando la propiedad `-Denvironment`.
 
 Google Chrome:
 
@@ -46,6 +49,25 @@ Firefox:
     gradle clean test -Ddriver=firefox
 
 
+## Ejecutar el proyecto seleccionando una clase específica
+
+Puedes ejecutar una clase de prueba específica utilizando la opción `--tests` seguida del nombre completo de la clase.
+Por ejemplo, para ejecutar la clase `DuckDuckGoSearchTest`, puedes usar uno de los siguientes comandos:
+
+para ejecutar la clase en navegador Google Chrome:
+
+    ./gradlew.bat clean test --tests "com.example.runners.DuckDuckGoSearchTest" -Denvironment=chrome
+
+para ejecutar la clase en navegador edge:
+
+    ./gradlew.bat clean test --tests "com.example.runners.DuckDuckGoSearchTest" -Denvironment=edge
+
+para ejecutar la clase en navegador firefox:
+
+    ./gradlew clean test --tests "com.example.runners.DuckDuckGoSearchTest" -Ddriver=firefox
+
+Usando alguno de estos comandos el reporte de Serenity se generará y solo mostrará lo correspondiente a esta clase.
+
 ## Ver los Informes de Pruebas
 
 Después de que las pruebas se hayan ejecutado, Serenity BDD genera un informe de prueba detallado y vivo.
@@ -57,7 +79,7 @@ Este informe proporciona un desglose de los resultados de las pruebas, incluyend
 
 ## Navegador Utilizado
 
-El navegador configurado para las pruebas es Google Chrome. 
+El navegador configurado para las pruebas es Google Chrome.
 Desde artchivo `serenity.conf` puedes cambiar la configuración para que este pueda ejecutarse en modo headless o en otro navegador compatible.
 
 
