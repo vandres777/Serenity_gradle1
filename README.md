@@ -1,3 +1,4 @@
+
 # 🚀Proyecto de Automatización de Pruebas con Serenity BDD y Gradle
 
 Este es un proyecto de ejemplo para la automatización de pruebas de interfaz de usuario (UI) web utilizando Serenity BDD, Java y Gradle.
@@ -23,7 +24,7 @@ Este proyecto de demostración automatiza pruebas para el sitio web DuckDuckGo. 
 Para ejecutar las pruebas de Serenity, abre una terminal en el directorio raíz del proyecto y aplica algunos de los siguientes comandos de termnal.
 
 
-Ejecuta las pruebas y genera los informes de Serenity (por defecto se ejecuta en google chrome):
+Ejecuta las pruebas y genera los informes de Serenity (por defecto se ejecuta en Google Chrome):
 
 	./gradlew clean test aggregate 
 
@@ -86,19 +87,19 @@ Puedes encontrar el informe abriendo el siguiente archivo en tu navegador web:
 
 Este informe proporciona un desglose de los resultados de las pruebas, incluyendo los pasos ejecutados, capturas de pantalla y el resultado de cada prueba.
 
-## Navegador Utilizado
-
-El navegador configurado para las pruebas es Google Chrome.
-Desde artchivo `serenity.conf` puedes cambiar la configuración para que este pueda ejecutarse en modo headless o en otro navegador compatible.
-
 
 ## Configuración de archivo serenity.conf
 
 El archivo `serenity.conf` es el fichero de configuración principal que utiliza el formato HOCON. En este proyecto, define aspectos cruciales para la ejecución de las pruebas, tales como:
 *   El navegador a utilizar (Chrome) y sus configuraciones específicas (argumentos de inicio, modo headless, etc.).
+*   Multi-navegador: Chrome, Edge, Firefox
+*   Multi-modalidad: Normal y Headless
+*   Navegación privada: Incógnito/InPrivate
+*   Configuración CI-ready: No-sandbox, disable-dev-shm-usage
+*   Reportes detallados: Screenshots automáticos
 *   La URL base del entorno de pruebas (https://duckduckgo.com).
 *   Tiempos de espera (timeouts) para la interacción con elementos web.
-*   Comportamiento de Serenity, como la toma de capturas de pantalla y el nivel de detalle de los logs.
+
 
 ## Configuración de archivo serenity.properties
 
