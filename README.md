@@ -27,7 +27,7 @@ Ejecuta las pruebas y genera los informes de Serenity (por defecto se ejecuta en
 
 	./gradlew clean test aggregate 
 
-## Ejecutar el proyecto seleccionando el navegador
+## Ejecutar el proyecto seleccionando el navegador (modo visible)
 
 Puedes especificar el navegador en el que deseas ejecutar las pruebas utilizando la propiedad `-Denvironment`.
 
@@ -42,6 +42,20 @@ Edge:
 Firefox:
 
     gradle clean test -Ddriver=firefox
+
+## Ejecutar el proyecto seleccionando el navegador (modo headless)
+
+Google Chrome:
+
+    ./gradlew clean test -Denvironment=chrome-headless
+
+Edge:
+
+    ./gradlew clean test -Denvironment=edge-headless
+
+Firefox
+
+EN CURSO.....
 
 
 ## Ejecutar el proyecto seleccionando una clase específica
