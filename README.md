@@ -23,10 +23,6 @@ Este proyecto de demostración automatiza pruebas para el sitio web DuckDuckGo. 
 Para ejecutar las pruebas de Serenity, abre una terminal en el directorio raíz del proyecto y aplica algunos de los siguientes comandos de termnal.
 
 
-Ejecuta las pruebas sin generar informes:
-
-	./gradlew clean test  
-
 Ejecuta las pruebas y genera los informes de Serenity (por defecto se ejecuta en google chrome):
 
 	./gradlew clean test aggregate 
