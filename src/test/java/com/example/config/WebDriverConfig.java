@@ -16,11 +16,14 @@ public class WebDriverConfig {
             logger.info("Configurando WebDriverManager para {}...", environment);
             switch (environment.toLowerCase()) {
                 case "edge":
-                    System.setProperty("wdm.edgeDriverVersion", "140.0.3485.81");
                     WebDriverManager.edgedriver().setup();
                     break;
                 case "firefox":
-                    WebDriverManager.firefoxdriver().setup();
+                    if (Boolean.parseBoolean(System.getProperty("headless"))) {
+                        WebDriverManager.firefoxdriver().setup();
+                    } else {
+                        WebDriverManager.firefoxdriver().setup();
+                    }
                     break;
                 case "chrome":
                 default:

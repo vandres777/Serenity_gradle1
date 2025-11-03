@@ -1,0 +1,10 @@
+# Excluir directorios de build y cache
+.gradle
+build
+target
+history
+
+# Excluir archivos de IDE y sistema
+.idea
+desktop.ini
+*.log
