@@ -6,9 +6,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import net.serenitybdd.junit5.SerenityJUnit5Extension;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
+import net.serenitybdd.annotations.Managed;
 import org.openqa.selenium.WebDriver;
 import com.example.tasks.SearchFor;
-import com.example.config.WebDriverConfig;
 import com.example.questions.ThePageTitle;
 import com.example.ui.SearchForm;
 
@@ -20,9 +20,11 @@ import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisi
 import static org.hamcrest.Matchers.containsString;
 
 @ExtendWith(SerenityJUnit5Extension.class)
-public class DuckDuckGoSearchWithTasksTest extends WebDriverConfig {
+public class DuckDuckGoSearchWithTasksTest {
 
+    @Managed
     private WebDriver browser;
+
     private Actor andres;
 
     @BeforeEach
