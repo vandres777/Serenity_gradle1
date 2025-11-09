@@ -10,7 +10,7 @@ pipeline {
             steps {
                 // CAMBIA 'master' POR 'main'
                 git branch: 'main',
-                    url: 'https://github.com/tu-usuario/tu-repositorio.git'
+                    url: 'https://github.com/vandres777/Serenity_gradle1'
             }
         }
 
