@@ -8,27 +8,26 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // CAMBIA 'master' POR 'main'
                 git branch: 'main',
-                    url: 'https://github.com/vandres777/Serenity_gradle1'
+                    url: 'https://github.com/vandres777/Serenity_gradle1.git'
             }
         }
 
         stage('Clean') {
             steps {
-                sh './gradlew clean'
+                bat '.\\gradlew.bat clean'
             }
         }
 
         stage('Tests') {
             steps {
-                sh './gradlew test'
+                bat '.\\gradlew.bat test'
             }
         }
 
         stage('Serenity Reports') {
             steps {
-                sh './gradlew aggregate'
+                bat '.\\gradlew.bat aggregate'
                 publishHTML target: [
                     allowMissing: false,
                     alwaysLinkToLastBuild: true,
@@ -38,6 +37,13 @@ pipeline {
                     reportName: 'Serenity BDD Report'
                 ]
             }
+        }
+    }
+
+    post {
+        always {
+            archiveArtifacts artifacts: 'target/site/serenity/**/*',
+                            onlyIfSuccessful: false
         }
     }
 }
