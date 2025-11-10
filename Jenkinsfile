@@ -13,37 +13,30 @@ pipeline {
             }
         }
 
-        stage('Clean') {
+        stage('Build and Test') {
             steps {
-                bat '.\\gradlew.bat clean'
-            }
-        }
-
-        stage('Tests') {
-            steps {
-                bat '.\\gradlew.bat test'
-            }
-        }
-
-        stage('Serenity Reports') {
-            steps {
-                bat '.\\gradlew.bat aggregate'
-                publishHTML target: [
-                    allowMissing: false,
-                    alwaysLinkToLastBuild: true,
-                    keepAll: true,
-                    reportDir: 'target/site/serenity',
-                    reportFiles: 'index.html',
-                    reportName: 'Serenity BDD Report'
-                ]
+                bat '.\\gradlew.bat clean test aggregate --no-daemon'
             }
         }
     }
 
     post {
         always {
-            archiveArtifacts artifacts: 'target/site/serenity/**/*',
-                            onlyIfSuccessful: false
+            // Publicar reporte HTML de Serenity
+            publishHTML([
+                allowMissing: false,
+                alwaysLinkToLastBuild: true,
+                keepAll: true,
+                reportDir: 'target/site/serenity',
+                reportFiles: 'index.html',
+                reportName: 'Serenity BDD Reports'
+            ])
+
+            // Publicar resultados JUnit
+            junit '**/target/site/serenity/*.xml'
+
+            // Archivar artifacts
+            archiveArtifacts artifacts: 'target/site/serenity/**/*'
         }
     }
 }
