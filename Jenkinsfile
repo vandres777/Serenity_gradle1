@@ -5,38 +5,43 @@ pipeline {
         jdk 'JDK-21'
     }
 
+    parameters {
+        choice(
+            name: 'BROWSER',
+            choices: ['chrome', 'firefox', 'edge', 'chrome-headless', 'firefox-headless', 'edge-headless'],
+            description: 'Selecciona el navegador para las pruebas',
+            defaultValue: 'chrome-headless'
+        )
+    }
+
+    environment {
+        BROWSER = "${params.BROWSER}"
+    }
+
     stages {
         stage('Checkout') {
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/vandres777/Serenity_gradle1.git'
+                    url: 'https://github.com/vandres777/Serenity_gradle1.git' // Using the project's Git URL
             }
         }
 
-        stage('Build and Test') {
+        stage('Tests') {
             steps {
-                bat '.\\gradlew.bat clean test aggregate --no-daemon'
+                script {
+                    // Construir parámetros para Serenity BDD
+                    def gradleParams = "-Dserenity.browser.webdriver=${params.BROWSER}"
+
+                    bat ".\\gradlew.bat clean test aggregate --no-daemon ${gradleParams}"
+                }
             }
         }
     }
 
     post {
         always {
-            // Publicar reporte HTML de Serenity
-            publishHTML([
-                allowMissing: false,
-                alwaysLinkToLastBuild: true,
-                keepAll: true,
-                reportDir: 'target/site/serenity',
-                reportFiles: 'index.html',
-                reportName: 'Serenity BDD Reports'
-            ])
-
-            // Publicar resultados JUnit
-            junit '**/target/site/serenity/*.xml'
-
-            // Archivar artifacts
             archiveArtifacts artifacts: 'target/site/serenity/**/*'
+            junit '**/target/site/serenity/*.xml' // Keeping the original JUnit report path
         }
     }
 }
