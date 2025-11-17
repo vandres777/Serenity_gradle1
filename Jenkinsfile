@@ -8,7 +8,7 @@ pipeline {
     parameters {
         choice(
             name: 'BROWSER',
-            choices: ['chrome-headless', 'chrome', 'firefox', 'edge', 'firefox-headless', 'edge-headless'],
+            choices: ['edge-headless','chrome-headless', 'chrome', 'firefox', 'edge', 'firefox-headless'],
             description: 'Selecciona el navegador para las pruebas'
         )
     }
