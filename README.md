@@ -178,6 +178,28 @@ Puedes especificar el navegador en el que deseas ejecutar las pruebas utilizando
     docker run --rm serenity-tests
 
 
+## Integración Continua con Jenkins
+
+El archivo `Jenkinsfile` en la raíz del proyecto define un pipeline de integración continua declarativo para automatizar la ejecución de las pruebas en un entorno de Jenkins.
+
+### Características del Pipeline
+
+- **Parametrizado**: Permite seleccionar el navegador en el que se ejecutarán las pruebas directamente desde la interfaz de Jenkins. Al iniciar un build, se debe usar la opción "Build with Parameters" para elegir entre los navegadores configurados (`chrome`, `edge`, `firefox`, etc., incluyendo sus versiones `headless`).
+- **Multi-navegador**: El pipeline pasa el navegador seleccionado como un parámetro a la tarea de Gradle, permitiendo ejecutar las pruebas en diferentes entornos de forma dinámica.
+- **Etapas Definidas**:
+    1.  **Checkout**: Descarga la última versión del código desde el repositorio Git.
+    2.  **Tests**: Ejecuta las pruebas de Serenity BDD usando el wrapper de Gradle (`gradlew`). Construye el comando de forma dinámica para pasar el entorno seleccionado (`-Dserenity.environment=...`).
+- **Post-Build**:
+    - **Archivado de Artefactos**: Guarda los informes de Serenity (`target/site/serenity`) como artefactos del build para su posterior consulta.
+    - **Resultados de Pruebas**: Publica los resultados de las pruebas en formato JUnit para que Jenkins pueda mostrarlos y hacer seguimiento de las tendencias.
+
+### ¿Cómo funciona?
+
+1.  Al iniciar un job en Jenkins, se presenta un parámetro de tipo `choice` llamado `BROWSER`.
+2.  El valor seleccionado (por ejemplo, `edge-headless`) se pasa a la tarea de Gradle a través de la propiedad del sistema `-Dserenity.environment`.
+3.  El archivo `build.gradle` está configurado para leer esta propiedad y pasarla a la tarea de prueba.
+4.  Finalmente, Serenity BDD utiliza esta propiedad para seleccionar el bloque de configuración correspondiente del archivo `serenity.conf`, lanzando así el navegador y la configuración correctos.
+
 ## Estructura del Proyecto
 
 ```
