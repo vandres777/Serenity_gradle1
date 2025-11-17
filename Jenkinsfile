@@ -29,7 +29,7 @@ pipeline {
             steps {
                 script {
                     // Construir parámetros para Serenity BDD
-                    def gradleParams = "-Dserenity.browser.webdriver=${params.BROWSER}"
+                    def gradleParams = "-Dserenity.environment=${params.BROWSER}"
 
                     bat ".\\gradlew.bat clean test aggregate --no-daemon ${gradleParams}"
                 }
