@@ -15,5 +15,5 @@ public class SearchForm {
             .located(By.id("links_wrapper"));
 
     public static final Target FIRST_RESULT_LINK = Target.the("primer resultado de búsqueda")
-            .located(By.xpath("(//a[@data-testid='result-title-a'])[1]"));
+            .located(By.xpath("(//div[@id='react-layout']//a[@data-testid='result-title-a'])[1]"));
 }

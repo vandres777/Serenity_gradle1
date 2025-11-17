@@ -5,7 +5,7 @@ pipeline {
     triggers {
         cron('H/5 * * * *')  // Cada 5 minutos
     }
-    
+
     tools {
         jdk 'JDK-21'
     }
