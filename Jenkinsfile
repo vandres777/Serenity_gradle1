@@ -28,8 +28,24 @@ pipeline {
         stage('Tests') {
             steps {
                 script {
-                    // Construir parámetros para Serenity BDD
-                    def gradleParams = "-Dserenity.environment=${params.BROWSER}"
+                    def browserParam = params.BROWSER
+                    def driverName
+                    def headlessMode = false
+
+                    if (browserParam.contains('-headless')) {
+                        driverName = browserParam.replace('-headless', '')
+                        headlessMode = true
+                    } else {
+                        driverName = browserParam
+                    }
+
+                    def gradleParams = "-Dwebdriver.driver=${driverName}"
+                    if (headlessMode) {
+                        gradleParams += " -Dheadless.mode=true"
+                    }
+
+                    // Mantener serenity.environment también, por si acaso
+                    gradleParams += " -Dserenity.environment=${browserParam}"
 
                     bat ".\\gradlew.bat clean test aggregate --no-daemon ${gradleParams}"
                 }
