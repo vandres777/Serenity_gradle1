@@ -28,25 +28,7 @@ pipeline {
         stage('Tests') {
             steps {
                 script {
-                    def browserParam = params.BROWSER
-                    def driverName
-                    def headlessMode = false
-
-                    if (browserParam.contains('-headless')) {
-                        driverName = browserParam.replace('-headless', '')
-                        headlessMode = true
-                    } else {
-                        driverName = browserParam
-                    }
-
-                    def gradleParams = "-Dwebdriver.driver=${driverName}"
-                    if (headlessMode) {
-                        gradleParams += " -Dheadless.mode=true"
-                    }
-
-                    // Mantener serenity.environment también, por si acaso
-                    gradleParams += " -Dserenity.environment=${browserParam}"
-
+                    def gradleParams = "-Dserenity.environment=${params.BROWSER}"
                     bat ".\\gradlew.bat clean test aggregate --no-daemon ${gradleParams}"
                 }
             }
