@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+// CONFIGURACIÓN DEL TRIGGER PERIÓDICO
+    triggers {
+        cron('H/5 * * * *')  // Cada 5 minutos
+    }
+    
     tools {
         jdk 'JDK-21'
     }
