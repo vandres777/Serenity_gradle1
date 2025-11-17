@@ -31,7 +31,7 @@ dependencies {
 test {
     useJUnitPlatform()
     systemProperties System.getProperties()
-    systemProperty 'serenity.environment', 'chrome-headless'
+    systemProperty 'serenity.environment', System.getProperty('serenity.environment', 'chrome-headless')
     testLogging {
         events "passed", "skipped", "failed"
         showStandardStreams = true
